@@ -108,3 +108,38 @@
 .login_form .inputs-submit {
   margin-top: 10px;
 }
+
+.sign_up-agree-statement {
+  margin-top: 20px;
+  /* font-size: 14px; */
+  color: #999999;
+  /* margin: 10px 60px;  */
+}
+
+.sign_up-agree-statement a {
+  font-weight: bold;
+  color: #999999;
+}
+
+.login_page .below_outer_container-one {
+  border: 1px solid #e6e6e6;
+  margin-top: 10px;
+  text-align: center;
+  padding: 20px;
+}
+
+.login_page .below_outer_container-one p {
+  margin: 0px;
+}
+
+.login_page .below_outer_container-two {
+  text-align: center;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.login_page .links-container img {
+  height: 50px;
+  width: 140px;
+  padding: 4px;
+}

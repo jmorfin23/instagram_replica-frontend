@@ -3,6 +3,8 @@ import './index.css';
 import Footer from '../../components/footer';
 import CopyWrite_Note from '../../components/copywrite_note';
 import Instagram_logo from '../../images/instagram_logo.png';
+import App_Store from '../../images/insta_image-1.png';
+import Google_Play from '../../images/insta_image-2.png';
 
 class Login_Page extends Component {
   render() {
@@ -28,19 +30,28 @@ class Login_Page extends Component {
                     <input className="form-control inputs" type="text" name="username" placeholder="Username" />
                     <input className="form-control inputs" type="password" name="pass" placeholder="Password" />
                     <input type="submit" className="btn btn-primary inputs-submit" value="Sign up" />
-                    <p>By signing up, you agree to our Terms , Data Policy and Cookies Policy .</p>
+                    <p className="sign_up-agree-statement">By signing up, you agree to our <a href="#">Terms</a>, <a href="#">Data Policy</a> and <a href="#">Cookies Policy</a>.</p>
                   </form>
-              <form className="login_form">
-                <p>Have an account? <a href="#">Log in</a></p>
-              </form>
                   </div>
                 </div>
-
-
               </div>
             </div>
-
           </div>
+
+            {/* below form container 1 */}
+          <div className="col-md-3 offset-md-6 col-sm-8 offset-sm-2 col-8 offset-2 below_outer_container-one">
+            <p>Have an account?<a href="#"> Log in</a></p>
+          </div>
+            {/* below the form container 2 */}
+          <div className="col-md-3 offset-md-6 col-sm-8 offset-sm-2 col-8 offset-2 below_outer_container-two">
+            <p>Get the app.</p>
+              {/* div for liks to the apple store and google play */}
+            <div className="links-container">
+              <img src={App_Store} alt="App Store Link"></img>
+              <img src={Google_Play} alt="Google Play Like"></img>
+            </div>
+          </div>
+
         </div>
       </div>
     );
