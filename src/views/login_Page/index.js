@@ -5,12 +5,15 @@ import CopyWrite_Note from '../../components/copywrite_note';
 import Instagram_logo from '../../images/instagram_logo.png';
 import App_Store from '../../images/insta_image-1.png';
 import Google_Play from '../../images/insta_image-2.png';
+import Iphones from '../../images/insta_phones-image.png';
 
 class Login_Page extends Component {
   render() {
     return (
       <div className="login_page">
         <div className="row add-background-color">
+          <div className="image-container">
+          </div>
           <div className="col-md-3 offset-md-6 col-sm-8 offset-sm-2 col-8 offset-2 outer_container">
             <img src={Instagram_logo} alt="instagram-logo"></img>
             <div className="row">
@@ -47,11 +50,16 @@ class Login_Page extends Component {
             <p>Get the app.</p>
               {/* div for liks to the apple store and google play */}
             <div className="links-container">
-              <img src={App_Store} alt="App Store Link"></img>
-              <img src={Google_Play} alt="Google Play Like"></img>
+              <a href="#"><img src={App_Store} alt="App Store Link"></img></a>
+              <a href="#"><img src={Google_Play} alt="Google Play Like"></img></a>
             </div>
           </div>
+        </div>
 
+        <div className="row">
+          <div className="col-md-12">
+              <Footer />
+          </div>
         </div>
       </div>
     );
