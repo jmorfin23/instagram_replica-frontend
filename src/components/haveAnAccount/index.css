@@ -1,0 +1,10 @@
+.register_page .below_outer_container-one {
+  border: 1px solid #e6e6e6;
+  margin-top: 10px;
+  text-align: center;
+  padding: 20px;
+}
+
+.register_page .below_outer_container-one p {
+  margin: 0px;
+}

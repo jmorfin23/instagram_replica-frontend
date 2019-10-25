@@ -1,0 +1,20 @@
+.login_page .login_form-container {
+  border: 1px solid #e6e6e6;
+  padding: 0px;
+  height: 380px;
+  width: 350px;
+  margin: 40px auto 0;
+}
+
+.login_page .below_login_form-container-one {
+  border: 1px solid #e6e6e6;
+  margin: 10px auto 0;
+  width: 350px;
+  height: 65px;
+  text-align: center;
+}
+.login_page .below_login_form-container-two {
+  margin: 10px auto 0;
+  width: 350px;
+  text-align: center;
+}

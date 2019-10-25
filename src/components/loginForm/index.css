@@ -1,24 +1,16 @@
 
-.register_form h6 {
+/* .login_form h6 {
   text-align: center;
   font-weight: bold;
   color: #999;
   font-size: 16px;
-}
+} */
 
 
-.register_form {
+.login_form {
   text-align: center;
 }
-.registerform img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 60%;
-  height: 60px;
-  margin-bottom: 10px;
-  margin-top: 25px;
-}
+
 
 .btn {
   width: 100%;
@@ -36,19 +28,19 @@
 }
 
 
-.register_form .flex-container {
+.login_form .flex-container {
   display: flex;
   margin: 15px 0px;
 }
 
-.register_form .flex_item-one {
+.login_form .flex_item-one {
   flex: 8;
   font-size: 13px;
   margin: 0px;
   color: #e6e6e6;
 }
 
-.register_form .or-statement {
+.login_form .or-statement {
   flex: 1;
   font-weight: bold;
   font-size: 13px;
@@ -57,13 +49,21 @@
   margin-left: 12px;
 }
 
-.register_form .flex_item-three {
+.login_form .flex_item-three {
   flex: 8;
   font-size: 13px;
   color: #e6e6e6;
 }
-
-.register_form .inputs {
+.loginform img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  height: 60px;
+  margin-bottom: 10px;
+  margin-top: 25px;
+}
+.login_form .inputs {
   margin-top: 10px;
   border-radius: 2px;
   background-color: #fafafa;
@@ -71,7 +71,7 @@
   color: rgba(var(--i1d,38,38,38),1);
 }
 
-.register_form .inputs-submit {
+.login_form .inputs-submit {
   margin-top: 10px;
 }
 
@@ -85,4 +85,27 @@
 .sign_up-agree-statement a {
   font-weight: bold;
   color: #999999;
+}
+
+.loginForm > img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  height: 60px;
+  margin-bottom: 10px;
+  margin-top: 25px;
+}
+
+.loginform .fb-login {
+  background-color: transparent!important;
+  color: #385185;
+}
+.loginform .forgot-pass {
+  color: #003569;
+  font-size: 12px;
+}
+
+.loginform .forgot-pass:hover {
+  text-decoration: none;
 }
