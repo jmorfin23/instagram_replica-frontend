@@ -27,7 +27,7 @@ class LoginForm extends Component {
                   <div className='flex_item-three'>–––––––––––––––––</div>
                 </div>
                 <button type="button" className="btn fb-login"><span className="fa fa-facebook-square add_margin-right"></span>Log in with Facebook</button>
-                <a className="forgot-pass" href="#">Forgot password?</a>
+                <a className="forgot-pass" href="/feed">Forgot password?</a>
                 </form>
               </div>
             </div>

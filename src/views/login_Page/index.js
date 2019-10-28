@@ -4,6 +4,9 @@ import Footer from '../../components/footer';
 import LoginForm from '../../components/loginForm';
 import DontHaveAnAccount from '../../components/dontHaveAnAccount';
 import GetTheApp from '../../components/getTheApp';
+//requests
+
+
 
 class Login_Page extends Component {
 
@@ -17,6 +20,13 @@ class Login_Page extends Component {
 
     let auth_name = e.target.elements.email.value;
     let pass = e.target.elements.pass.value;
+    console.log(auth_name);
+    console.log(pass);
+
+    const URL = 'http://localhost:3000/api/login';
+
+    
+
   }
 
   render() {

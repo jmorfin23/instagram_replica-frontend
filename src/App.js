@@ -3,6 +3,8 @@ import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import Register_Page from './views/register_Page';
 import Login_Page from './views/login_Page';
+import Feed_Page from './views/feed_Page';
+
 
 class App extends Component {
 
@@ -20,6 +22,7 @@ class App extends Component {
       <Switch>
         <Route exact path={['/', '/register']} render={() => <Register_Page /> }/>
         <Route exact path="/login" render={() => <Login_Page /> }/>
+        <Route exact path="/feed" render={() => <Feed_Page />} />
       </Switch>
       </div>
     );
