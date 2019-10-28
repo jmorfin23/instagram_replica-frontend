@@ -5,8 +5,6 @@
   color: #999;
   font-size: 16px;
 }
-
-
 .register_form {
   text-align: center;
 }
@@ -34,7 +32,6 @@
 .add_margin-right {
   margin-right: 7px;
 }
-
 
 .register_form .flex-container {
   display: flex;
