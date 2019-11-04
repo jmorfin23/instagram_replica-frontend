@@ -1,6 +1,11 @@
 nav {
   border-bottom: solid 1px #dbdbdb;
 }
- section {
+.feed_page section {
    background-color: rgba(var(--b3f,250,250,250),1);
+   padding: 65px;
  }
+
+.feed_page .no-padding {
+  padding: 0px;
+}

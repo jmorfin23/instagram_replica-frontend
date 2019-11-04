@@ -16,10 +16,10 @@ class Feed_Page extends Component {
         <div className="row">
           <div className="col-md-8 offset-md-2">
             <div className="row">
-              <div className="col-md-8">
+              <div className="col-md-8 no-padding">
                 <Left_Panel />
               </div>
-              <div className="col-md-4">
+              <div className="col-md-4 no-padding">
                 <Right_Panel />
               </div>
             </div>

@@ -1,7 +1,52 @@
+/* PROFILE SECTION HEADING ON RIGHT PANEL */
 .right_panel .right_panel-profile-container {
   display: flex;
+  margin: 0 0 12px;
 }
 
-.right_panel .right_panel-profile-container i {
+.right_panel .fa-2x {
+  font-size: 55px;
+}
+
+.right_panel .rp {
+  margin-left: 15px;
+}
+.right_panel .right_panel_1 h6 {
+  margin: 0px;
+}
+
+.right_panel .right_panel_1 p {
+  margin: 0px;
+  margin-bottom: 0px;
+}
+
+/* STORIES SECTION ON RIGHT PANEL */
+.right_panel .stories_section {
+  background-color: rgba(var(--cdc,255,255,255),1);
+  border: 1px solid #e6e6e6;
+}
+
+.right_panel .ss_1 {
+  display: flex;
+  margin: 8px 0 0;
+  padding: 4px 16px;
+  justify-content: space-between;
+}
+
+.right_panel .ss_1 .ss_1_01 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #999999;
+}
+
+.right_panel .ss_1 .ss_1_02 {
+  font-size: 14px;
 
 }
+
+.right_panel .stories_section .stories_section_02 {
+  padding: 4px 16px;
+  color: #999999;
+}
+
+/* SUGGESTION SECTION ON RIGHT PANEL */
