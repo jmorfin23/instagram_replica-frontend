@@ -14,27 +14,13 @@ class Login_Page extends Component {
     super();
   }
 
-  handle_Login = async(e) => {
-    e.preventDefault();
-    console.log('inside handle login');
-
-    let auth_name = e.target.elements.email.value;
-    let pass = e.target.elements.pass.value;
-    console.log(auth_name);
-    console.log(pass);
-
-    const URL = 'http://localhost:3000/api/login';
-
-    
-
-  }
-
   render() {
     console.log('this is a test');
+    console.log(this.props.handleLogin)
     return (
       <div className="login_page">
           <div className="login_form-container">
-            <LoginForm  handle_Login={this.handle_Login}/>
+            <LoginForm  handleLogin={this.props.handleLogin}/>
           </div>
           <div className="below_login_form-container-one">
             <DontHaveAnAccount />

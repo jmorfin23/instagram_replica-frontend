@@ -4,6 +4,9 @@ import { Switch, Route } from 'react-router-dom';
 import Register_Page from './views/register_Page';
 import Login_Page from './views/login_Page';
 import Feed_Page from './views/feed_Page';
+import SECRET_KEY from './config.js';
+let jwt = require('jsonwebtoken');
+
 
 
 class App extends Component {
@@ -16,12 +19,42 @@ class App extends Component {
     }
   }
 
+
+  handleLogin = async(e) => {
+
+    console.log('inside handle login');
+    e.preventDefault();
+    //grab username and password
+    let auth_name = e.target.elements.email.value;
+    let pass = e.target.elements.pass.value;
+    console.log(auth_name);
+    console.log(pass);
+    const URL = 'http://localhost:3000/api/login';
+    //send to backend
+
+  }
+
+  handleRegister = async(e) => {
+    console.log('inside handle register');
+
+    e.preventDefault();
+
+    //grab info
+    let email = e.target.elements.email.value;
+    let name = e.target.elements.name.value;
+    let username = e.target.elements.username.value;
+    let password = e.target.elements.pass.value;
+    console.log(email, name, username, password);
+    //send token
+    
+  }
+
   render() {
   return (
       <div className="App">
       <Switch>
-        <Route exact path={['/', '/register']} render={() => <Register_Page /> }/>
-        <Route exact path="/login" render={() => <Login_Page /> }/>
+        <Route exact path={['/', '/register']} render={() => <Register_Page handleRegister={this.handleRegister}/> }/>
+        <Route exact path="/login" render={() => <Login_Page handleLogin={this.handleLogin}/> }/>
         <Route exact path="/feed" render={() => <Feed_Page />} />
       </Switch>
       </div>

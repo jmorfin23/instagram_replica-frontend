@@ -26,7 +26,7 @@ class Register_Page extends Component {
           </div>
 
           <div className="col-md-3 offset-md-6 col-sm-6 offset-sm-4 col-8 offset-2 outer_container">
-            <RegisterForm />
+            <RegisterForm handleRegister={this.props.handleRegister}/>
           </div>
 
             {/* below form container 1 */}

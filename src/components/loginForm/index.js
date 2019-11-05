@@ -5,7 +5,6 @@ import Instagram_logo from '../../images/instagram_logo.png';
 class LoginForm extends Component {
   constructor(props) {
     super();
-    console.log('inside constructor')
 
   }
   render() {
@@ -16,7 +15,7 @@ class LoginForm extends Component {
           <div className='col-md-12'>
             <div className="row">
               <div className="col-md-10 offset-md-1 col-sm-10 offset-sm-1 col-10 offset-1">
-              <form onSubmit={this.props.handle_Login} className="login_form">
+              <form onSubmit={this.props.handleLogin} className="login_form">
                 <input className="form-control inputs" type="text" name="email" placeholder="Phone number, username, or email" />
                 <input className="form-control inputs" type="password" name="pass" placeholder="Password" />
                 <input type="submit" className="btn btn-primary inputs-submit" value="Log In" />
