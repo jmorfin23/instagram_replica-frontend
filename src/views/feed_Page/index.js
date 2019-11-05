@@ -14,7 +14,7 @@ class Feed_Page extends Component {
         </nav>
         <section>
         <div className="row">
-          <div className="col-md-8 offset-md-2">
+          <div className="col-md-10 offset-md-1">
             <div className="row">
               <div className="col-md-8 no-padding">
                 <Left_Panel />
