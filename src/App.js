@@ -29,9 +29,12 @@ class App extends Component {
     let pass = e.target.elements.pass.value;
     console.log(auth_name);
     console.log(pass);
-    const URL = 'http://localhost:3000/api/login';
+    const URL = 'http://localhost:5000/api/login';
     //send to backend
+    let response_01 = await fetch(URL);
+    let data_01 = await response_01.json();
 
+    console.log('test_01');
   }
 
   handleRegister = async(e) => {
@@ -45,8 +48,29 @@ class App extends Component {
     let username = e.target.elements.username.value;
     let password = e.target.elements.pass.value;
     console.log(email, name, username, password);
-    //send token
-    
+
+    //URL for API call;
+    const URL_1 = 'http://localhost:5000/api/register';
+
+    //define tokens
+    let token = jwt.sign(
+      { 'email': email, 'name': name, 'username': username, 'password': password },
+      SECRET_KEY,
+      { expiresIn: '1h' } // expires in 1 hour
+    );
+
+    //send token to register the user;
+    let response = await fetch(URL_1, {
+      headers: {
+        'Content-Type': 'application/json',
+        'token': token
+      }
+    });
+    console.log(response);
+
+    //data is what is received back from backend;
+    let data = await response.json();
+    console.log(data); 
   }
 
   render() {
