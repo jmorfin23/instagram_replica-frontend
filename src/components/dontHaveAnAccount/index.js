@@ -5,7 +5,7 @@ import './index.css';
 function DontHaveAnAccount() {
   return (
     <div className="donthaveAnAccount">
-      <p>Don't have an account?<a href="/login"> Sign up</a></p>
+      <p>Don't have an account?<a href="/register"> Sign up</a></p>
     </div>
 
   );

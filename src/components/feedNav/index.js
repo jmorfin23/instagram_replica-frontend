@@ -7,7 +7,7 @@ function FeedNav() {
   return (
     <div className="feedNav">
       <div className="navbox1">
-      
+
         <div className="navbox1_1">
           <img src={Instalogo} alt="instagram logo"></img>
         </div>
@@ -23,13 +23,13 @@ function FeedNav() {
 
       <div className="navbox3">
       <div className="navbox3_1">
-        <i class="far fa-compass fa-lg"></i>
+        <i className="far fa-compass fa-lg"></i>
       </div>
       <div className="navbox3_2">
-        <i class="far fa-heart fa-lg"></i>
+        <i className="far fa-heart fa-lg"></i>
       </div>
       <div className="navbox3_3">
-        <i class="far fa-user fa-lg"></i>
+        <i className="far fa-user fa-lg"></i>
       </div>
       </div>
 
