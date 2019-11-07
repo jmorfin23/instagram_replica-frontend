@@ -9,7 +9,6 @@ import SECRET_KEY from './config.js';
 let jwt = require('jsonwebtoken');
 
 
-
 class App extends Component {
 
   constructor() {
@@ -18,8 +17,37 @@ class App extends Component {
     this.state = {
       logged_in: false,
     }
+
+    this.logged_in()
+    console.log(localStorage);
   }
 
+  logged_in() {
+    console.log('inside logged in');
+    //checks if there is a valid token
+    const token = this.getToken()
+    console.log(token);
+    this.isTokenExpired(token);
+  }
+
+  isTokenExpired(token) {
+    console.log('inside is token expired?')
+    const exp = this.getExpTime();
+    console.log(exp)
+    if (exp < Date.now() / 1000) {
+      return true;
+    } else {
+      return false; 
+    }
+
+  }
+
+  getExpTime() {
+    return localStorage.getItem('exp');
+  }
+  getToken() {
+    return localStorage.getItem('token');
+  }
 
   handleLogin = async(e) => {
 
@@ -29,8 +57,8 @@ class App extends Component {
     //grab username and password
     let auth_name = e.target.elements.email.value;
     let pass = e.target.elements.pass.value;
-    console.log(auth_name);
-    console.log(pass);
+
+    //api URL
     const URL = 'http://localhost:5000/api/login';
 
     //create a token to send to backend api;
@@ -39,6 +67,7 @@ class App extends Component {
       SECRET_KEY,
       { expiresIn: '1h' } // expires in 1 hour
     );
+
     //send to backend
     let response_01 = await fetch(URL, {
       headers: {
@@ -60,6 +89,17 @@ class App extends Component {
 
       //pushes the user to the 'play' page
       this.props.history.push('/feed');
+
+      //set local storage for info about the user
+      console.log(data_01.email, data_01.url, data_01.fullname, data_01.username, data_01.iat, data_01.exp);
+
+      localStorage.setItem('email', data_01.email);
+      localStorage.setItem('url', data_01.url);
+      localStorage.setItem('fullname', data_01.fullname);
+      localStorage.setItem('username', data_01.username);
+      localStorage.setItem('exp', data_01.exp);
+      console.log(localStorage);
+      //set state from local storage
 
     } else {
       alert(data_01.message)
