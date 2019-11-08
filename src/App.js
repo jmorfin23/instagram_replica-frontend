@@ -16,28 +16,58 @@ class App extends Component {
 
     this.state = {
       logged_in: false,
+      user: null
     }
-
-    this.logged_in()
     console.log(localStorage);
+  }
+
+  componentDidMount() {
+    console.log('inside componentDidMount')
+    this.logged_in();
   }
 
   logged_in() {
     console.log('inside logged in');
-    //checks if there is a valid token
+    //grabs token from local storage
     const token = this.getToken()
     console.log(token);
-    this.isTokenExpired(token);
+    //checks if there is a valid token
+    const arb = this.isTokenExpired(token);
+    console.log('arb: ')
+    //if arb is true it means the token is not expired and still valid;
+    console.log(arb)
+    if (arb) {
+      console.log('the token is still valid so profile should stay in local storage');
+      this.setState({ logged_in: true});
+      this.addToState();
+    } else if (arb == undefined) {
+      console.log('arb is undefined')
+      this.pushToLoginPage();
+      return;
+    } else {
+      console.log('storage is cleared!!');
+      this.clearLocalStorage();
+      this.setState({ logged_in: false });
+      this.pushToLoginPage();
+    }
+
   }
 
   isTokenExpired(token) {
     console.log('inside is token expired?')
     const exp = this.getExpTime();
-    console.log(exp)
-    if (exp < Date.now() / 1000) {
+    console.log('this is the expired time: ' + exp) ;
+    console.log('this is the time now: ' + Date.now() / 1000)
+    //add a try accept in here
+    if (exp > Date.now() / 1000) {
+      console.log('the token exp time is greater than the time now so this means the time has not been reached yet, local storage should stay the same.')
       return true;
     } else {
-      return false; 
+      if (exp == null) {
+        return undefined;
+      }
+      console.log('the current time has reachedthe exp time, the local storage should be cleared')
+      return false;
     }
 
   }
@@ -48,7 +78,18 @@ class App extends Component {
   getToken() {
     return localStorage.getItem('token');
   }
+  pushToFeedPage() {
+    //pushes the user to the 'play' page
+    this.props.history.push('/feed');
+  }
 
+  pushToLoginPage() {
+    this.props.history.push('/login');
+  }
+
+  clearLocalStorage() {
+    localStorage.clear();
+  }
   handleLogin = async(e) => {
 
     console.log('inside handle login');
@@ -87,19 +128,20 @@ class App extends Component {
 
       alert('User logged in');
 
-      //pushes the user to the 'play' page
-      this.props.history.push('/feed');
+      //pushes the user to the feed page
+      this.pushToFeedPage();
 
       //set local storage for info about the user
-      console.log(data_01.email, data_01.url, data_01.fullname, data_01.username, data_01.iat, data_01.exp);
+      //consolodate this l8r
 
       localStorage.setItem('email', data_01.email);
-      localStorage.setItem('url', data_01.url);
-      localStorage.setItem('fullname', data_01.fullname);
       localStorage.setItem('username', data_01.username);
+      localStorage.setItem('fullname', data_01.fullname);
+      localStorage.setItem('url', data_01.url);
       localStorage.setItem('exp', data_01.exp);
       console.log(localStorage);
       //set state from local storage
+      this.addToState();
 
     } else {
       alert(data_01.message)
@@ -144,6 +186,46 @@ class App extends Component {
     } else {
       alert(data.message)
     }
+  }
+
+  handleLogout = async() => {
+    console.log('inside handle logout');
+  }
+
+
+  getData = async() => {
+    //this grabs data for the profile and sets it into the state if the token is valid
+    console.log("inside get data");
+
+    let token_01 = localStorage.getItem('token');
+
+    const URL_02 = 'http://localhost:5000/api/data';
+
+    let response_03 = await fetch(URL_02, {
+      headers: {
+        'Content-Type': 'application/json',
+        'token': token_01,
+      }
+    });
+
+    let data_03 = await response_03.json();
+
+    console.log(data_03)
+  }
+
+  addToState() {
+    console.log('inside add to state.')
+    //add from local storage to state;
+    let fullname = localStorage.getItem('fullname');
+    let username = localStorage.getItem('username');
+    let email = localStorage.getItem('email');
+    let url = localStorage.getItem('url');
+    console.log('test2')
+    console.log(fullname, username, email, url)
+    //add to state:
+    this.setState({ user: {'email': email, 'fullname': fullname, 'username': username, 'url': url}});
+    console.log('test3')
+    console.log(this.state);
   }
 
   render() {
