@@ -1,47 +1,61 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
+import { UserContext } from './components/userContext.js';
 import Register_Page from './views/register_Page';
 import Login_Page from './views/login_Page';
 import Feed_Page from './views/feed_Page';
+import Profile_Page from './views/profile_Page';
 import {withRouter} from 'react-router-dom';
 import SECRET_KEY from './config.js';
 let jwt = require('jsonwebtoken');
 
 
+
+
 class App extends Component {
+
+  static contextType = UserContext
 
   constructor() {
     super();
-
-    this.state = {
-      logged_in: false,
-      user: null
-    }
-    console.log(localStorage);
   }
+
 
   componentDidMount() {
-    console.log('inside componentDidMount')
-    this.logged_in();
+    console.log('inside componentDidMount');
+      // window.addEventListener('beforeunload', () =>{
+      // });
+      this.isLogged_in();
+
+  }
+  // componentWillUpdate() {
+  //   console.log('component did update');
+  //   this.logged_in();
+  // }
+
+  componentDidCatch(error, info) {
+    console.log('component did catch');
   }
 
-  logged_in() {
+  isLogged_in() {
     console.log('inside logged in');
     //grabs token from local storage
-    const token = this.getToken()
+    const token = this.getToken();
     console.log(token);
     //checks if there is a valid token
     const arb = this.isTokenExpired(token);
-    console.log('arb: ')
+    console.log('arb: ');
     //if arb is true it means the token is not expired and still valid;
-    console.log(arb)
+    console.log(arb);
     if (arb) {
       console.log('the token is still valid so profile should stay in local storage');
       this.setState({ logged_in: true});
-      this.addToState();
-    } else if (arb == undefined) {
-      console.log('arb is undefined')
+      this.addToContext();
+      // this.addToState();
+    } else if (arb == undefined || null) {
+      console.log('arb is undefined or null')
+      this.setState({ logged_in: false })
       this.pushToLoginPage();
       return;
     } else {
@@ -78,10 +92,6 @@ class App extends Component {
   getToken() {
     return localStorage.getItem('token');
   }
-  pushToFeedPage() {
-    //pushes the user to the 'play' page
-    this.props.history.push('/feed');
-  }
 
   pushToLoginPage() {
     this.props.history.push('/login');
@@ -90,63 +100,7 @@ class App extends Component {
   clearLocalStorage() {
     localStorage.clear();
   }
-  handleLogin = async(e) => {
 
-    console.log('inside handle login');
-    e.preventDefault();
-
-    //grab username and password
-    let auth_name = e.target.elements.email.value;
-    let pass = e.target.elements.pass.value;
-
-    //api URL
-    const URL = 'http://localhost:5000/api/login';
-
-    //create a token to send to backend api;
-    let token = jwt.sign(
-      { 'email': auth_name, 'password': pass },
-      SECRET_KEY,
-      { expiresIn: '1h' } // expires in 1 hour
-    );
-
-    //send to backend
-    let response_01 = await fetch(URL, {
-      headers: {
-        'Content-Type': 'application/json',
-        'token': token
-      }
-    });
-    let data_01 = await response_01.json();
-    console.log(data_01);
-
-    //if we get back a successful user alert with login;
-    if (data_01.message === 'success') {
-      this.setState({ logged_in: true });
-
-      // set the token we receive into local storage
-      localStorage.setItem('token', data_01.token);
-
-      alert('User logged in');
-
-      //pushes the user to the feed page
-      this.pushToFeedPage();
-
-      //set local storage for info about the user
-      //consolodate this l8r
-
-      localStorage.setItem('email', data_01.email);
-      localStorage.setItem('username', data_01.username);
-      localStorage.setItem('fullname', data_01.fullname);
-      localStorage.setItem('url', data_01.url);
-      localStorage.setItem('exp', data_01.exp);
-      console.log(localStorage);
-      //set state from local storage
-      this.addToState();
-
-    } else {
-      alert(data_01.message)
-    }
-  }
 
   handleRegister = async(e) => {
     console.log('inside handle register');
@@ -212,29 +166,24 @@ class App extends Component {
 
     console.log(data_03)
   }
+  addToContext = (d) => {
+    //takes user info from local storage and updates context
+    const [user, setUser] = this.context;
 
-  addToState() {
-    console.log('inside add to state.')
-    //add from local storage to state;
-    let fullname = localStorage.getItem('fullname');
-    let username = localStorage.getItem('username');
-    let email = localStorage.getItem('email');
-    let url = localStorage.getItem('url');
-    console.log('test2')
-    console.log(fullname, username, email, url)
-    //add to state:
-    this.setState({ user: {'email': email, 'fullname': fullname, 'username': username, 'url': url}});
-    console.log('test3')
-    console.log(this.state);
+    setUser({email: localStorage.getItem('email'), fullname: localStorage.getItem('fullname'), username: localStorage.getItem('username'), url: localStorage.getItem('url') });
   }
 
+
+
   render() {
+    console.log('inside app render');
   return (
       <div className="App">
       <Switch>
-        <Route exact path={['/', '/register']} render={() => <Register_Page handleRegister={this.handleRegister}/> }/>
-        <Route exact path="/login" render={() => <Login_Page handleLogin={this.handleLogin}/> }/>
+        <Route exact path={['/', '/register']} render={() => <Register_Page /> }/>
+        <Route exact path="/login" render={() => <Login_Page /> }/>
         <Route exact path="/feed" render={() => <Feed_Page />} />
+        <Route exact path="/profile" render={() => <Profile_Page/>} />
       </Switch>
       </div>
     );

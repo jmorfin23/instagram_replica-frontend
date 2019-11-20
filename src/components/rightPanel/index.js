@@ -1,18 +1,22 @@
-import React, {Component} from 'react';
+import React, {Component, useContext} from 'react';
 import './index.css';
 import Footer from '../footer';
+import { UserContext } from '../userContext.js'
 
-function Right_Panel() {
+
+function Right_Panel(props) {
+  const [user, setUser] = useContext(UserContext);
+  console.log('inside right panel')
   return (
     <div className="right_panel">
       {/* profile section */}
       <div className="right_panel-profile-container">
         <div>
-          <i className="fas fa-user-circle fa-2x"></i>
+          <img src={user.url} alt="profie picture"></img>
         </div>
         <div className="rp">
-          <div className="right_panel_1"><h6>Jonmorfin</h6></div>
-          <div className="right_panel_2"><p>Jonathan Morfin</p></div>
+          <div className="right_panel_1"><h6>{user.username}</h6></div>
+          <div className="right_panel_2"><p>{user.fullname}</p></div>
         </div>
       </div>
       {/* stories section */}

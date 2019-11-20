@@ -4,6 +4,9 @@
   padding: 26px 20px;
   margin: 0 120px;
 }
+.n1 {
+  flex: 2;
+}
 .navbox1 {
   display: flex;
   flex: 2;
@@ -26,7 +29,7 @@
   margin-top: 5px;
 }
 
-.feedNav > .navbox1 > .navbox1_1 img {
+.navbox1_1 img {
   height: 35px;
   width: 35px;
 }
@@ -61,4 +64,15 @@
 .feedNav .navbox3 .navbox3_3 {
   padding: 5px;
   margin: 0 10px;
+}
+.feedNav .navbox3 .navbox3_1 a {
+  color: black;
+}
+
+.feedNav .navbox3 .navbox3_2 a {
+  color: black;
+}
+
+.feedNav .navbox3 .navbox3_3 a {
+  color: black;
 }

@@ -15,12 +15,11 @@ class Login_Page extends Component {
   }
 
   render() {
-    console.log('this is a test');
-    console.log(this.props.handleLogin)
+    console.log('inside login page');
     return (
       <div className="login_page">
           <div className="login_form-container">
-            <LoginForm  handleLogin={this.props.handleLogin}/>
+            <LoginForm />
           </div>
           <div className="below_login_form-container-one">
             <DontHaveAnAccount />
