@@ -19,6 +19,8 @@ class App extends Component {
 
   constructor() {
     super();
+
+    this.state = {}
   }
 
 
@@ -37,6 +39,9 @@ class App extends Component {
   componentDidCatch(error, info) {
     console.log('component did catch');
   }
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('should component update'); 
+  }
 
   isLogged_in() {
     console.log('inside logged in');
@@ -50,18 +55,16 @@ class App extends Component {
     console.log(arb);
     if (arb) {
       console.log('the token is still valid so profile should stay in local storage');
-      this.setState({ logged_in: true});
       this.addToContext();
       // this.addToState();
     } else if (arb == undefined || null) {
       console.log('arb is undefined or null')
-      this.setState({ logged_in: false })
+      // this.setState({ logged_in: false })
       this.pushToLoginPage();
       return;
     } else {
       console.log('storage is cleared!!');
       this.clearLocalStorage();
-      this.setState({ logged_in: false });
       this.pushToLoginPage();
     }
 

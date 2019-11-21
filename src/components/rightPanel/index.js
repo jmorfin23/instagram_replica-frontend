@@ -12,7 +12,9 @@ function Right_Panel(props) {
       {/* profile section */}
       <div className="right_panel-profile-container">
         <div>
-          <img src={user.url} alt="profie picture"></img>
+          <a href="/profile">
+            <img src={user.url} alt="profie picture"></img>
+          </a>
         </div>
         <div className="rp">
           <div className="right_panel_1"><h6>{user.username}</h6></div>

@@ -5,13 +5,13 @@ import { UserContext } from '../userContext.js'
 
 
 function Left_Panel() {
-  
+
   const [user, setUser] = useContext(UserContext);
 
   console.log('inside left panel')
   return (
     <div className="left_panel">
-      <h1>{user.email}</h1>
+      <h1>posts</h1>
     </div>
 
   );

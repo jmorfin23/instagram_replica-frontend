@@ -1,0 +1,18 @@
+.profile-wrapper {
+  display: flex;
+  margin-top: 60px;
+}
+
+.pw_1 {
+  flex: 1;
+}
+
+.pw_1 img {
+  border-radius: 50%;
+  height: 160px;
+  width: 160px;
+}
+
+.pw_2 {
+  flex: 2;
+}
