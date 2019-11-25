@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './index.css';
-import Instagram_logo from '../../images/instagram_logo.png';
 
-function HaveAnAccount() {
+const HaveAnAccount = () => {
   return (
     <div className="haveAnAccount">
       <p>Have an account?<a href="/login"> Log in</a></p>
@@ -10,6 +9,5 @@ function HaveAnAccount() {
 
   );
 }
-
 
 export default HaveAnAccount;

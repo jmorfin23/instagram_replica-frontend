@@ -1,10 +1,10 @@
-import React, {Component, useContext} from 'react';
+import React, { useContext } from 'react';
 import './index.css';
 import Footer from '../footer';
 import { UserContext } from '../userContext.js'
 
 
-function Right_Panel(props) {
+const Right_Panel = (props) => {
   const [user, setUser] = useContext(UserContext);
   console.log('inside right panel')
   return (
@@ -64,9 +64,7 @@ function Right_Panel(props) {
           <span>© 2019 INSTAGRAM FROM FACEBOOK</span>
         </div>
       <div>
-
       </div>
-
     </div>
 
   );

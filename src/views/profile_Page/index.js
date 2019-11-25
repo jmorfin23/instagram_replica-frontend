@@ -7,6 +7,7 @@ import { UserContext } from '../../components/userContext.js';
 
 const Profile_Page = () => {
   const [user, setUser] = useContext(UserContext);
+
     return (
       <div className="profile_page">
         <div>
@@ -18,7 +19,10 @@ const Profile_Page = () => {
           <div className="col-md-8 offset-md-2">
             <div className="profile-wrapper">
               <div className="pw_1">
+                <label for="file-input">
                 <img src={user.url} alt="profile pic"></img>
+                </label>
+                <input id="file-input" type="file"></input>
               </div>
             <div className="pw_2">
               <div className="pw_2_1">

@@ -3,7 +3,7 @@ import './index.css';
 import Instagram_logo2 from '../../images/instagram_logo2.png'
 import Instalogo from '../../images/instagram.logo.png';
 
-function FeedNav() {
+const FeedNav = () => {
   return (
     <div className="feedNav">
       <div className="n1">

@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './index.css';
 import Instagram_logo from '../../images/instagram_logo.png';
 
-function RegisterForm(props) {
+const RegisterForm = (props) => {
   return (
     <div className="registerform">
       <img src={Instagram_logo} alt="instagram-logo"></img>

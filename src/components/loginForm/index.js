@@ -1,4 +1,4 @@
-import React, {Component, useContext} from 'react';
+import React, { useContext } from 'react';
 import './index.css';
 import Instagram_logo from '../../images/instagram_logo.png';
 import { UserProvider, UserContext } from '../userContext.js';

@@ -1,10 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './index.css';
-import Instagram_logo from '../../images/instagram_logo.png';
 import App_Store from '../../images/insta_image-1.png';
 import Google_Play from '../../images/insta_image-2.png';
 
-function GetTheApp() {
+const GetTheApp = () => {
   return (
     <div className="getTheApp">
     <p>Get the app.</p>
@@ -17,6 +16,5 @@ function GetTheApp() {
 
   );
 }
-
 
 export default GetTheApp;

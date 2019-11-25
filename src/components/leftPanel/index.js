@@ -1,10 +1,9 @@
-import React, {Component, useContext} from 'react';
+import React, { useContext } from 'react';
 import './index.css';
 import { UserContext } from '../userContext.js'
 
 
-
-function Left_Panel() {
+const Left_Panel = () => {
 
   const [user, setUser] = useContext(UserContext);
 
