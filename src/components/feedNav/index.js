@@ -19,8 +19,7 @@ const FeedNav = () => {
           </div>
         </a>
       </div>
-
-
+      
       <div className="navbox2">
       <input className="form-control" type="text" placeholder="Search" aria-label="Search"></input>
       </div>
