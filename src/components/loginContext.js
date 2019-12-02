@@ -83,3 +83,15 @@ export const LoginProvider = props => {
 
 
 //{this.state.display == true && <h1>Displayed!</h1>}
+
+
+//{
+        //   this.state.userAge == '' ? buttonOne : this.state.userAge < 18 ? buttonThree : buttonTwo
+        //
+        // }
+
+//CSS to change styles
+
+
+//another way to render lists to the dom
+//const items = this.state.toDoList.map(i => <li>{i}</li>) 
