@@ -11,13 +11,27 @@ const URL = 'http://127.0.0.1:5000/api/update-profile-picture';
 let img_preview = document.getElementById('img_preview');
 
 
+
+
 const Profile_Page = () => {
   const [user, setUser] = useContext(UserContext);
 
+  const testfunct = async(image) => {
+    console.log('test funct');
 
+    let res = await fetch(URL, {
+      headers: {
+        'Content-Type': 'application/json',
+        'image': image
+      }
+    });
+    let returned = await res.json();
 
+    console.log(returned);
 
-  const onChange = (e) => {
+  }
+
+  const onChange = async(e) => {
 
     let file = e.target.files[0];
     console.log(file);
@@ -26,21 +40,17 @@ const Profile_Page = () => {
     formData.append('file', file);
     formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
 
-    const axios = require('axios').default;
+    // const axios = require('axios').default;
 
     //request
-    axios({
-      url: CLOUDINARY_URL,
+    let response = await fetch(CLOUDINARY_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      data: formData
-    }).then(function(response) {
-      console.log(response.data.secure_url);
-    }).catch(function(error) {
-      console.log(error);
-    })
+      body: formData
+    });
+    let data = await response.json();
+    console.log(data);
+    //call testfunct to add to profile pic to database
+    testfunct(data.secure_url);
   }
     return (
       <div className="profile_page">
