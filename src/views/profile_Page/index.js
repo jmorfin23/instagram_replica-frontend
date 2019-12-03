@@ -17,18 +17,18 @@ const Profile_Page = () => {
   const [user, setUser] = useContext(UserContext);
 
   const testfunct = async(image) => {
-    console.log('test funct');
-
     let res = await fetch(URL, {
       headers: {
         'Content-Type': 'application/json',
-        'image': image
+        'image': image,
+        'email': user.email
       }
     });
     let returned = await res.json();
 
-    console.log(returned);
-
+    if (returned.message == 'success') {
+      setUser({url: image})
+    }
   }
 
   const onChange = async(e) => {
@@ -39,8 +39,6 @@ const Profile_Page = () => {
     var formData = new FormData();
     formData.append('file', file);
     formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
-
-    // const axios = require('axios').default;
 
     //request
     let response = await fetch(CLOUDINARY_URL, {
