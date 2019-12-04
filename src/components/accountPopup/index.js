@@ -6,19 +6,16 @@ return (
   <div className="account-popup">
     <div className='popup'>
       <div className='popup\_inner'>
-        <ul>
-          <li>Change Password</li>
-          <li>Nametag</li>
-          <li>Apps and Websites</li>
-          <li>Notifications</li>
-          <li>Pirvacy and Security</li>
-          <li>Login Activity</li>
-          <li>Emails from Instagram</li>
-          <li>Report a Problem</li>
-          <li>Log Out</li>
-          <li>Cancel</li>
-        </ul>
-          <button className="btn btn-danger" onClick={props.closePopup}>Close</button>
+        <button>Change Password</button>
+        <button>Nametag</button>
+        <button>Apps and Websites</button>
+        <button>Notifications</button>
+        <button>Pirvacy and Security</button>
+        <button>Login Activity</button>
+        <button>Emails from Instagram</button>
+        <button>Report a Problem</button>
+        <button>Log Out</button>
+        <button onClick={props.closePopup}>Cancel</button>
       </div>
     </div>
   </div>
