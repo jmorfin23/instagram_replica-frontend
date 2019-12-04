@@ -1,21 +1,24 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import './index.css';
 import Footer from '../../components/footer';
 import FeedNav from '../../components/feedNav';
 import { UserContext } from '../../components/userContext.js';
+import AccountPopup from '../../components/accountPopup';
 const CLOUDINARY_URL = 	'https://api.cloudinary.com/v1_1/dozvqlete/upload';
 const CLOUDINARY_UPLOAD_PRESET = 'zzmnc51n';
   //cloudinary api - client side upload typically done through server side (security loophole)
 const URL = 'http://127.0.0.1:5000/api/update-profile-picture';
 
-let img_preview = document.getElementById('img_preview');
-
-
-
 
 const Profile_Page = () => {
+  const [clicked, setClicked] = useState(false);
   const [user, setUser] = useContext(UserContext);
 
+
+  const closePopup = () => {
+    console.log('close popup');
+    setClicked(!clicked);
+  }
   const testfunct = async(image) => {
     let res = await fetch(URL, {
       headers: {
@@ -34,7 +37,6 @@ const Profile_Page = () => {
   const onChange = async(e) => {
 
     let file = e.target.files[0];
-    console.log(file);
 
     var formData = new FormData();
     formData.append('file', file);
@@ -46,7 +48,6 @@ const Profile_Page = () => {
       body: formData
     });
     let data = await response.json();
-    console.log(data);
     //call testfunct to add to profile pic to database
     testfunct(data.secure_url);
   }
@@ -73,7 +74,10 @@ const Profile_Page = () => {
                   <button className="" type="button">Edit Profile</button>
                 </a>
                 <div>
-                  <button><i className="fas fa-cog fa-lg"></i></button>
+                  <button onClick={function() {
+                    console.log('clicked.');
+                    setClicked(!clicked);
+                  }}><i className="fas fa-cog fa-lg"></i></button>
                 </div>
               </div>
               <ul>
@@ -115,6 +119,10 @@ const Profile_Page = () => {
 
         {/* Footer */}
         <Footer />
+
+        {clicked ?
+          <AccountPopup closePopup={closePopup}/> : null  
+        }
 
       </div>
     );
